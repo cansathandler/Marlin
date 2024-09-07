@@ -1712,7 +1712,7 @@
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR false
+#define INVERT_E0_DIR true
 #define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
@@ -2156,8 +2156,8 @@
 #define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
-  #define Z_SAFE_HOMING_X_POINT 35  // (mm) X point for Z homing
-  #define Z_SAFE_HOMING_Y_POINT 11  // (mm) Y point for Z homing
+  #define Z_SAFE_HOMING_X_POINT 100  // (mm) X point for Z homing
+  #define Z_SAFE_HOMING_Y_POINT 100  // (mm) Y point for Z homing
 #endif
 
 // Homing speeds (linear=mm/min, rotational=°/min)
