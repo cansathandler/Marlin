@@ -2117,7 +2117,8 @@
   #if ENABLED(DISTINCT_E_FACTORS)
     #define ADVANCE_K { 0.22 }    // (mm) Compression length per 1mm/s extruder speed, per extruder
   #else
-    #define ADVANCE_K 0.22        // (mm) Compression length applying to all extruders
+//    #define ADVANCE_K 0.22        // (mm) Compression length applying to all extruders: Modified by Ryo
+    #define ADVANCE_K 2.0        // Added by Ryo
   #endif
   //#define ADVANCE_K_EXTRA       // Add a second linear advance constant, configurable with M900 L.
   //#define LA_DEBUG              // Print debug information to serial during operation. Disable for production use.
@@ -2175,8 +2176,8 @@
  * the probe to be unable to reach any points.
  */
 #if PROBE_SELECTED && !IS_KINEMATIC
-  #define PROBING_MARGIN_LEFT 24
-  #define PROBING_MARGIN_RIGHT 22
+  #define PROBING_MARGIN_LEFT 50
+  #define PROBING_MARGIN_RIGHT 40
   #define PROBING_MARGIN_FRONT 3
   #define PROBING_MARGIN_BACK 20
 #endif
@@ -2191,6 +2192,14 @@
 
 #if BOTH(AUTO_BED_LEVELING_UBL, EEPROM_SETTINGS)
   //#define OPTIMIZED_MESH_STORAGE  // Store mesh with less precision to save EEPROM space
+#endif
+
+#if EITHER(AUTO_BED_LEVELING_BILINEAR, AUTO_BED_LEVELING_LINEAR)
+  // Override the mesh area if the automatic (max) area is too large
+  #define MESH_MIN_X 24
+  #define MESH_MIN_Y 6
+  #define MESH_MAX_X 228
+  #define MESH_MAX_Y 180
 #endif
 
 /**
